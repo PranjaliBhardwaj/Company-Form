@@ -1,0 +1,197 @@
+body {
+  padding: 0px;
+  margin: 0px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 20px;
+  background-color: white;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 1.1rem;
+  border-radius: 0rem;
+}
+
+.form-group input {
+  border-radius : 10px;
+  border-bottom: 2px solid rgb(128, 127, 127);
+}
+.form-input {
+  padding: 15px;
+  background-color: white;
+  border-radius: 50px / 50px;
+  border: 1px solid #ccc;
+  width: 100%;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+  background-color: #f0f0f0;
+  outline: none;
+  border-bottom: 2px solid #000;
+}
+
+.form-input.error {
+  border: 2px solid red; 
+}
+
+.form-button {
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #000;
+  border: none;
+  border-radius: 2rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+  color: white;
+  width: 150px;
+  margin-right: 100px;
+}
+
+.form-button:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+}
+
+.form-button:disabled {
+  background-color: #888;
+  cursor: not-allowed;
+}
+
+.form-button:active {
+  background-color: black;
+  color: white;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+}
+
+.button-group {
+  margin-top: 20px;
+}
+
+.image-preview {
+  margin-top: 20px;
+}
+
+.preview-image {
+  max-width: 200px;
+  border-radius: 10px;
+}
+
+.form-title {
+  font-size: 30px;
+  margin-top: 30px; 
+  text-align: center;
+}
+.form-buttons {
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #000;
+  border: none;
+  border-radius: 50px / 50px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+  color: white;
+  width: 150px;
+  align-self: flex-end; 
+  margin-top: 10px;
+}
+
+.form-buttons:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+}
+
+.form-buttons:disabled {
+  background-color: #888;
+  cursor: not-allowed;
+}
+
+.form-buttons:active {
+  background-color: black;
+  color: white;
+}
+
+.Box1{
+  margin-left: 50px;
+  width: 500px;
+}
+.Box2{
+  margin-left: 200px;
+  width: 550px;
+}
+.headi {
+  color: black;
+  font-size: 90px;
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 800;
+  font-style: normal;
+  margin-left :0px;
+}
+.fill {
+  color: black;
+  font-weight: 100;
+  font-size: 30px;
+  width: 450px;
+}
+
+h4 {
+  color: grey;
+}
+.headtw {
+  font-size: 50px;
+  font-weight: 400;
+}
+@media (max-width: 1024px) {
+  .form-container {
+    flex-direction: column;
+    padding: 4%;
+  }
+  
+  .Box1, .Box2 {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  
+  .form-button, .form-buttons {
+    width: 45%;
+    min-width: unset;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-input {
+    padding: 0.75rem;
+  }
+  
+  .form-label {
+    font-size: 0.9rem;
+  }
+}
