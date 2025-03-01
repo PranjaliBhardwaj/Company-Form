@@ -51,7 +51,7 @@ export default function Footer() {
           animate={scrollDirection === "up" ? { y: 100, opacity: 0 } : { y: 0, opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          Clever <i>Studio</i>
+          <text>Clever <i>Studio</i></text>
         </motion.span>
       </motion.div>
 
