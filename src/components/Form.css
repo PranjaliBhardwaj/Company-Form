@@ -17,7 +17,7 @@ body {
 
 .form-group {
   margin-bottom: 20px;
-  width: 100%; /* Ensure it doesn’t exceed parent */
+  width: 100%;
 }
 
 .form-label {
@@ -91,10 +91,10 @@ body {
 
 .button-group {
   margin-top: 20px;
-  width: 100%; /* Constrain to parent */
+  width: 100%;
   display: flex;
-  justify-content: flex-end; /* Align buttons to right without overflow */
-  flex-wrap: wrap; /* Allow wrapping if needed */
+  justify-content: flex-end;
+  flex-wrap: wrap;
 }
 
 .image-preview {
@@ -146,6 +146,7 @@ body {
 .Box1 {
   margin-left: 50px;
   width: 500px;
+  text-align: left; /* Align all text inside Box1 to the left */
 }
 
 .Box2 {
@@ -167,10 +168,16 @@ body {
   font-weight: 100;
   font-size: 30px;
   width: 450px;
+  text-align: left; /* Explicitly left-align this text */
 }
 
 h4 {
   color: grey;
+  text-align: left; /* Left-align the Phone and Email labels */
+}
+
+p {
+  text-align: left; /* Left-align the phone number and email */
 }
 
 .headtw {
@@ -188,7 +195,7 @@ h4 {
   .Box1, .Box2 {
     margin-left: 0;
     width: 100%;
-    max-width: 100%; /* Prevent exceeding parent */
+    max-width: 100%;
   }
 }
 
@@ -197,7 +204,7 @@ h4 {
     display: flex;
     justify-content: space-between;
     gap: 1rem;
-    padding: 0 10px; /* Add minimal padding to avoid edge overlap */
+    padding: 0 10px;
     box-sizing: border-box;
   }
   
@@ -210,11 +217,11 @@ h4 {
   .Box1, .Box2 {
     width: 100vw;
     margin-left: 0;
-    padding: 0 5px; /* Minimal padding to fit */
+    padding: 0 5px;
   }
   
   .form-container {
-    padding: 10px; /* Reduce padding to fit content */
+    padding: 10px;
   }
 }
 
@@ -242,7 +249,7 @@ h4 {
   }
   
   .form-button, .form-buttons {
-    width: 100%; /* Full width to avoid overlap */
+    width: 100%;
     margin-right: 0;
   }
   
