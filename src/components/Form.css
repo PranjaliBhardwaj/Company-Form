@@ -17,7 +17,6 @@ body {
 
 .form-group {
   margin-bottom: 20px;
-  width: 100%;
 }
 
 .form-label {
@@ -26,6 +25,7 @@ body {
   margin-bottom: 5px;
   font-size: 1.1rem;
   border-radius: 0rem;
+  text-align: left;
 }
 
 .form-group input {
@@ -54,7 +54,7 @@ body {
   border: 2px solid red;
 }
 
-.form-button {
+.form-buttonsa {
   padding: 12px 25px;
   font-size: 1rem;
   font-weight: bold;
@@ -65,7 +65,37 @@ body {
   cursor: pointer;
   color: white;
   width: 150px;
-  margin-right: 100px;
+  margin-right: 0; /* Removed the original 150px margin */
+}
+
+.form-buttonsa:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+}
+
+.form-buttonsa:disabled {
+  background-color: #888;
+  cursor: not-allowed;
+}
+
+.form-buttonsa:active {
+  background-color: black;
+  color: white;
+}
+
+.form-button {
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #000;
+  border: none;
+  border-radius: 2rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+  color: white;
+  width: 150px; /* Consistent width */
+  margin-right: 0; /* Remove default margin-right */
 }
 
 .form-button:hover {
@@ -89,12 +119,20 @@ body {
   font-size: 0.9rem;
 }
 
-.button-group {
+.button-group, .button-groups, .button-groupsa {
   margin-top: 20px;
-  width: 100%;
+}
+
+.button-groupsa {
   display: flex;
-  justify-content: flex-end;
-  flex-wrap: wrap;
+  justify-content: flex-start; /* Aligns the button to the left */
+  width: 100%; /* Matches the width of the form-group */
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between; /* Pushes Back to left and Next to right */
+  width: 100%; /* Matches the width of the form-group */
 }
 
 .image-preview {
@@ -118,13 +156,12 @@ body {
   font-weight: bold;
   background-color: #000;
   border: none;
-  border-radius: 50px / 50px;
+  border-radius: 2rem; /* Match form-button radius */
   transition: background-color 0.3s ease, color 0.3s ease;
   cursor: pointer;
   color: white;
-  width: 150px;
-  align-self: flex-end;
-  margin-top: 10px;
+  width: 150px; /* Consistent width */
+  margin-right: 0; /* Remove default margin */
 }
 
 .form-buttons:hover {
@@ -146,12 +183,12 @@ body {
 .Box1 {
   margin-left: 50px;
   width: 500px;
-  text-align: left; /* Align all text inside Box1 to the left */
+  text-align: left; /* Left-align for larger screens */
 }
 
 .Box2 {
   margin-left: 200px;
-  width: 550px;
+  width: 550px; /* Center-align for larger screens */
 }
 
 .headi {
@@ -168,21 +205,21 @@ body {
   font-weight: 100;
   font-size: 30px;
   width: 450px;
-  text-align: left; /* Explicitly left-align this text */
 }
 
 h4 {
   color: grey;
-  text-align: left; /* Left-align the Phone and Email labels */
+  text-align: left; 
 }
 
 p {
-  text-align: left; /* Left-align the phone number and email */
+  text-align: left; /* Ensure phone and email stay left-aligned */
 }
 
 .headtw {
   font-size: 50px;
   font-weight: 400;
+  text-align: left;
 }
 
 @media (max-width: 1024px) {
@@ -196,20 +233,19 @@ p {
     margin-left: 0;
     width: 100%;
     max-width: 100%;
+    text-align: center; /* Center everything on small screens */
   }
 }
 
 @media (max-width: 768px) {
-  .button-group {
+  .button-group, .button-groups, .button-groupsa {
     display: flex;
     justify-content: space-between;
     gap: 1rem;
-    padding: 0 10px;
-    box-sizing: border-box;
   }
   
-  .form-button, .form-buttons {
-    width: 45%;
+  .form-button, .form-buttons, .form-buttonsa {
+    width: 150px; /* Maintain consistent width */
     min-width: unset;
     margin-right: 0;
   }
@@ -217,11 +253,6 @@ p {
   .Box1, .Box2 {
     width: 100vw;
     margin-left: 0;
-    padding: 0 5px;
-  }
-  
-  .form-container {
-    padding: 10px;
   }
 }
 
@@ -236,7 +267,6 @@ p {
   
   .Box1, .Box2 {
     width: 100vw;
-    padding: 0 5px;
   }
   
   .headi {
@@ -248,14 +278,13 @@ p {
     width: 100%;
   }
   
-  .form-button, .form-buttons {
-    width: 100%;
+  .form-button, .form-buttons, .form-buttonsa {
+    width: 130px; /* Slightly smaller but consistent for very small screens */
     margin-right: 0;
   }
   
-  .button-group {
-    flex-direction: column;
-    align-items: center;
+  .button-group, .button-groups, .button-groupsa {
+    justify-content: space-between; /* Maintain spacing */
     gap: 10px;
   }
 }
