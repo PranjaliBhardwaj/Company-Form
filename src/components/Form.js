@@ -183,8 +183,8 @@ const Form = () => {
             />
           </div>
 
-          <div className="button-group">
-            <button type="button" onClick={nextStep} className="form-buttons">
+          <div className="button-groupsa">
+            <button type="button" onClick={nextStep} className="form-buttonsa">
               Next
             </button>
           </div>
