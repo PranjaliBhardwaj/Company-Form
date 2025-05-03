@@ -1,5 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import emailjs from '@emailjs/browser';
 import './Form.css';
+
+// Initialize EmailJS with the Public Key
+const initializeEmailJS = () => {
+  emailjs.init('3iVongl0U3LYatWuQ');
+};
 
 const Form = () => {
   const [formData, setFormData] = useState({
@@ -14,7 +20,7 @@ const Form = () => {
     achievements: '',
     clients: '',
     teamInfo: '',
-    images: '',
+    driveImageLink: '',
     additionalInfo: '',
     driveLink: '',
   });
@@ -31,12 +37,17 @@ const Form = () => {
     achievements: false,
     clients: false,
     teamInfo: false,
-    images: false,
+    driveImageLink: false,
     additionalInfo: false,
     driveLink: false,
   });
 
   const [currentStep, setCurrentStep] = useState(1);
+
+  // Initialize EmailJS when the component mounts
+  useEffect(() => {
+    initializeEmailJS();
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -51,20 +62,6 @@ const Form = () => {
     });
   };
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setFormData({
-        ...formData,
-        images: file.name,
-      });
-      setErrors({
-        ...errors,
-        images: false,
-      });
-    }
-  };
-
   const validateStep = () => {
     let newErrors = {};
     let hasErrors = false;
@@ -72,7 +69,7 @@ const Form = () => {
     const fieldsToValidate = {
       1: ['companyName', 'contactNumber', 'servicesOffered', 'contactInfo'],
       2: ['portfolio', 'workSummary', 'websiteOverview', 'testimonials'],
-      3: ['achievements', 'clients', 'teamInfo', 'images'],
+      3: ['achievements', 'clients', 'teamInfo', 'driveImageLink'],
       4: ['additionalInfo', 'driveLink'],
     };
 
@@ -93,7 +90,63 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateStep()) {
-      console.log('Form submitted:', formData);
+      const recipients = [
+        'riteshmaurya571@gmail.com',
+        'ritesh@cleverstudio.in',
+        'cleverstudiohost@gmail.com',
+      ];
+
+      const emailData = {
+        companyName: formData.companyName,
+        contactNumber: formData.contactNumber,
+        servicesOffered: formData.servicesOffered,
+        contactInfo: formData.contactInfo,
+        portfolio: formData.portfolio,
+        workSummary: formData.workSummary,
+        websiteOverview: formData.websiteOverview,
+        testimonials: formData.testimonials,
+        achievements: formData.achievements,
+        clients: formData.clients,
+        teamInfo: formData.teamInfo,
+        driveImageLink: formData.driveImageLink,
+        additionalInfo: formData.additionalInfo,
+        driveLink: formData.driveLink,
+      };
+
+      const sendEmails = recipients.map((email) =>
+        emailjs.send(
+          'service_ctt537s', // Service ID
+          'template_8299j3k', // Template ID
+          { ...emailData, to_email: email }
+        )
+      );
+
+      Promise.all(sendEmails)
+        .then((results) => {
+          console.log('Emails sent successfully:', results);
+          alert('Form submitted and emails sent successfully!');
+          setFormData({
+            companyName: '',
+            contactNumber: '',
+            servicesOffered: '',
+            contactInfo: '',
+            portfolio: '',
+            workSummary: '',
+            websiteOverview: '',
+            testimonials: '',
+            achievements: '',
+            clients: '',
+            teamInfo: '',
+            driveImageLink: '',
+            additionalInfo: '',
+            driveLink: '',
+          });
+          setCurrentStep(1);
+        })
+        .catch((error) => {
+          console.error('Email sending failed:', error);
+          alert('Failed to send emails. Please try again.');
+        });
     }
   };
 
@@ -287,14 +340,17 @@ const Form = () => {
             </div>
             <div className="form-group">
               <label className="form-label">
-                Images {errors.images && <span style={{ color: 'red' }}>*</span>}
+                Google Drive Link for Images {errors.driveImageLink && <span style={{ color: 'red' }}>*</span>}
               </label>
               <input
-                type="file"
-                name="images"
-                onChange={handleImageChange}
-                className={`form-input ${errors.images ? 'error' : ''}`}
+                type="text"
+                name="driveImageLink"
+                value={formData.driveImageLink}
+                onChange={handleInputChange}
+                placeholder="Paste your Google Drive link here"
+                className={`form-input ${errors.driveImageLink ? 'error' : ''}`}
               />
+              <p className="help-text">Please make sure the link is shareable (set to 'Anyone with the link can view')</p>
             </div>
             <div className="button-group">
               <button type="button" onClick={prevStep} className="form-button">
